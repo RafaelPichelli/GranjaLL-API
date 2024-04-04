@@ -1,5 +1,6 @@
 package io.github.RafaelPichelli.GranjaLLApi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +28,7 @@ public class Morador {
 
     @ManyToOne
     @JoinColumn(name = "casa_numero")
+    @JsonBackReference
     private Casa casa;
 
     @Column

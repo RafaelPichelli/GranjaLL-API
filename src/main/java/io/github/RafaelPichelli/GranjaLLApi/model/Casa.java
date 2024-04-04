@@ -1,5 +1,7 @@
 package io.github.RafaelPichelli.GranjaLLApi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,12 +25,14 @@ public class Casa {
     private Long numero;
 
     @OneToMany(mappedBy = "casa")
+    @JsonManagedReference
     private List<Morador> moradores;
 
     @Column
     private LocalDate vencimento;
 
     @OneToMany(mappedBy = "casa")
+    @JsonIgnoreProperties("casa")
     private List<Aluguel> aluguel;
 
 

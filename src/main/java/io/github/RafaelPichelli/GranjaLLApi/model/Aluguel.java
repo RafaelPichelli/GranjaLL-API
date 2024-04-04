@@ -1,5 +1,8 @@
 package io.github.RafaelPichelli.GranjaLLApi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.github.RafaelPichelli.GranjaLLApi.enums.StatusEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,6 +29,7 @@ public class Aluguel {
 
     @ManyToOne
     @JoinColumn(name = "casa_numero")
+    @JsonIgnoreProperties({"aluguel", "moradores", "vencimento"})
     private Casa casa;
 
     @Column
